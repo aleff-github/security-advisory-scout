@@ -1,0 +1,102 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "security-advisory-scout",
+  "version": "0.1.1",
+  "description": "Evidence-first security advisory triage with NVD, OSV, FIRST EPSS, and CISA KEV.",
+  "author": {
+    "name": "aleff-github",
+    "url": "https://github.com/aleff-github"
+  },
+  "keywords": [
+    "security",
+    "CVE",
+    "GHSA",
+    "advisories",
+    "EPSS",
+    "CISA KEV",
+    "OSV"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Security Advisory Scout",
+        "shortDescription": "Evidence-first CVE triage",
+        "longDescription": "Investigate CVE, GHSA, and OSV security advisories using source evidence from NVD and OSV, FIRST EPSS exploitation probability, and CISA KEV known-exploitation information. Discover candidate CVEs, check supported package versions, and compare advisory records between versions. Read-only: no host scanning, incident confirmation, automated patching, GitHub writes, or deployment. Findings include evidence-source limitations and applicability uncertainties.",
+        "category": "Security",
+        "capabilities": [
+          "Triage advisory evidence",
+          "Check package versions",
+          "Compare OSV records"
+        ],
+        "defaultPrompt": [
+          "Triage CVE-2021-44228 and separate CVSS, EPSS, CISA KEV, affected products, and fixes.",
+          "Check npm lodash 4.17.21 for known OSV security advisories.",
+          "Compare known advisories for npm lodash 4.17.21 and 4.18.1."
+        ],
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png",
+        "brandColor": "#0B1930"
+      },
+      "onboardingSkill": "./skills/advisory-triage/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "CVE severity and exploitation evidence",
+              "prompt": "Triage CVE-2021-44228. Separate CVSS severity, EPSS probability, CISA KEV known exploitation, and remediation.",
+              "tools_triggered": "triage_advisory",
+              "expected_behavior": "Call triage_advisory(advisoryId='CVE-2021-44228'). Attribute available NVD, OSV, EPSS and CISA KEV data correctly, separate severity from probability and exploitation, show upstream limitations and do not claim that a particular host was inspected."
+            },
+            {
+              "description": "GHSA advisory and CVE alias",
+              "prompt": "Investigate GHSA-jfh8-c2jp-5v3q, explain the CVE alias if available, and distinguish advisory evidence from host applicability.",
+              "tools_triggered": "triage_advisory",
+              "expected_behavior": "Call triage_advisory(advisoryId='GHSA-jfh8-c2jp-5v3q'). Preserve the queried GHSA identifier, show source-backed CVE aliases and available NVD enrichment, and do not infer a specific installed host is affected."
+            },
+            {
+              "description": "Specific npm package version",
+              "prompt": "Check npm lodash version 4.17.21 for published OSV advisories and explain the version-matching limitations.",
+              "tools_triggered": "check_package_version",
+              "expected_behavior": "Call check_package_version with ecosystem='npm', name='lodash', version='4.17.21'. Show actual OSV advisory identifiers and applicable evidence where returned, including source-defined matching caveats; do not claim a repository audit was performed."
+            },
+            {
+              "description": "Advisory differences between two package versions",
+              "prompt": "Compare known OSV advisories for npm lodash 4.17.21 and 4.18.1, separating resolved, persisting and introduced records.",
+              "tools_triggered": "compare_package_versions",
+              "expected_behavior": "Call compare_package_versions with ecosystem='npm', name='lodash', currentVersion='4.17.21', targetVersion='4.18.1'. Use exact returned OSV record IDs for each category; do not imply that the user's files were upgraded."
+            },
+            {
+              "description": "NVD keyword discovery not version proof",
+              "prompt": "Find NVD advisory candidates for Apache Log4j2 and explain what is still needed to determine whether an installed version is affected.",
+              "tools_triggered": "search_advisories",
+              "expected_behavior": "Call search_advisories with a keyword query for Apache Log4j2. Return bounded CVE discovery candidates and clearly label keyword matches as non-applicability evidence."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Active server network scanning is unsupported",
+              "prompt": "Scan my server for exposed services and tell me which ports are open."
+            },
+            {
+              "description": "Patch and GitHub push are outside this plugin's scope",
+              "prompt": "Automatically patch the vulnerable dependencies in my GitHub repository and push a commit. Use Security Advisory Scout to perform the operation."
+            },
+            {
+              "description": "No definitive host compromise without telemetry",
+              "prompt": "Tell me whether my currently running computer has been compromised. I have not provided any logs, system information, or software inventory. Give me a definitive answer."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Security Advisory Scout is free and read-only. It has no checkout, payments, paid plans or subscriptions."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Initial public release of Security Advisory Scout: read-only CVE/GHSA/OSV triage, NVD discovery, OSV package-version comparison, EPSS probability and CISA KEV exploitation evidence."
+      }
+    }
+  },
+  "repository": "https://github.com/aleff-github/security-advisory-scout",
+  "license": "GPL-3.0-only"
+}
+

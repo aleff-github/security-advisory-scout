@@ -1,0 +1,10 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "security-advisory-scout": {
+      "type": "streamable-http",
+      "url": "https://security-advisory-scout-mcp.alessandro-greco-1.workers.dev/mcp"
+    }
+  }
+}
+
