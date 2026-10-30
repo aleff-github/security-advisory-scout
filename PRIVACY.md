@@ -35,9 +35,8 @@ Security Advisory Scout does not sell user data, provide advertising, or intenti
 
 ## Contact, corrections, and updates
 
-After the official public repository is created, non-sensitive privacy questions may be raised through its GitHub Issues page. Do not disclose passwords or sensitive vulnerability reports publicly; see [SECURITY.md](SECURITY.md).
+Non-sensitive privacy questions may be raised through the [public repository's GitHub Issues page](https://github.com/aleff-github/security-advisory-scout/issues). Do not disclose passwords or sensitive vulnerability reports publicly; see [SECURITY.md](SECURITY.md).
 
 This policy may change when data processing, hosting, or integrated upstream services change.
 
-_Last reviewed for the initial public-release preparation: October 2026._
-
+_Last updated: October 2026._
