@@ -1,8 +1,8 @@
 # Security Policy
 
-## Supported release
+## Supported service
 
-The initial public-release candidate is **Security Advisory Scout v0.1.1**. The production MCP Worker release must be validated and deployed separately before public submission; this statement is not a claim that every staged change is already live.
+Security issues affecting the publicly available Security Advisory Scout service or the maintained source repository are in scope. When possible, include the affected component and version in a report.
 
 ## Reporting a vulnerability
 
@@ -17,4 +17,3 @@ Useful report details include the affected component and version, impact, reprod
 Issues in Security Advisory Scout's code or integration behavior are in scope. Vulnerabilities in NVD, OSV, FIRST, CISA, Cloudflare or other upstream infrastructure generally belong with those upstream providers.
 
 Security Advisory Scout is a **read-only advisory analysis** tool. It cannot scan local hosts or networks, modify source code or repositories, or guarantee safety.
-
