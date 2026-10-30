@@ -4,6 +4,12 @@
 
 Security Advisory Scout is a free, read-only tool for investigating CVEs, GitHub Security Advisories (GHSA), and other OSV-family advisories. It separates **severity**, **probability of exploitation**, **known exploitation**, and **version-specific vulnerability evidence** instead of treating them as interchangeable conclusions.
 
+## Use in ChatGPT
+
+**[Open Security Advisory Scout on ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ace40136f7881918ab2bd8ce3a62faf)**
+
+Open the plugin page and follow the ChatGPT instructions to install or enable it. Then ask a question about a CVE, an advisory, or a specific open-source package version. No separate account or payment is required by the MCP service.
+
 ## What it does
 
 - Searches NVD for candidate CVEs by product, vendor, or vulnerability terms.
@@ -31,7 +37,7 @@ Supported OSV package ecosystems: npm, PyPI, Maven, Go, crates.io, RubyGems, NuG
 
 > Check published advisories for npm lodash 4.17.21. Explain how OSV matches the supplied version.
 
-> Compare OSV advisories for npm lodash 4.17.21 and 4.18.1. Separate resolved, persisting, and newly returned records.
+> Compare OSV advisories for npm lodash 4.17.21 and 4.18.0. Separate resolved, persisting, and newly returned records.
 
 ## Evidence limits
 
@@ -46,29 +52,13 @@ This plugin cannot scan a computer, enumerate network ports, patch source code, 
 - [FIRST EPSS](https://www.first.org/epss/)
 - [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
 
-## Development
+## Support and security reporting
 
-Node.js 22 or later is recommended.
-
-```sh
-npm ci
-npm run check
-npm test
-npm audit
-npm run dev
-```
-
-The service is a Cloudflare Worker serving Streamable HTTP MCP at `/mcp`. A production Worker deployment and review-portal registration are separate actions. Never put API tokens, credentials, reviewer-only recordings, or private development information in this repository.
-
-## Legal, support and reporting
-
+- Non-sensitive questions and bug reports: [GitHub Issues](https://github.com/aleff-github/security-advisory-scout/issues).
+- Suspected security vulnerabilities: follow the private-reporting procedure in [Security Policy](SECURITY.md). Do not post sensitive reports in public issues.
 - [Privacy Policy](PRIVACY.md)
 - [Terms of Service](TERMS.md)
-- [Security Policy](SECURITY.md)
-- Support: use this repository's **Issues** page after the public repository is created.
-- Security disclosures: follow the private-reporting procedure in [SECURITY.md](SECURITY.md).
 
 ## License
 
 GPL-3.0-only. See [LICENSE](LICENSE).
-
