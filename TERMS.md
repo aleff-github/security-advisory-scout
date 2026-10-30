@@ -20,7 +20,6 @@ The service is offered without charge, without purchases or subscriptions. Avail
 
 ## Changes and questions
 
-These terms may be updated as the service develops. Non-sensitive questions may be submitted through the official public repository's GitHub Issues page after it is created; suspected vulnerabilities should follow [SECURITY.md](SECURITY.md).
+These terms may be updated as the service develops. Non-sensitive questions may be submitted through the [public repository's GitHub Issues page](https://github.com/aleff-github/security-advisory-scout/issues); suspected vulnerabilities should follow [SECURITY.md](SECURITY.md).
 
-_Last reviewed for the initial public-release preparation: October 2026._
-
+_Last updated: October 2026._
